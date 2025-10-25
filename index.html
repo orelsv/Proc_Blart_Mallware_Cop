@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <title>Mallware Cop — Control</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { font-family: system-ui, Segoe UI, Arial; background:#0f172a; color:#e6eef8; padding:20px; }
+    .card { background:#0b1220; border-radius:12px; padding:16px; margin-bottom:12px; box-shadow:0 6px 18px rgba(2,6,23,0.6); }
+    button { padding:10px 14px; border-radius:8px; border:none; cursor:pointer; margin-right:8px; }
+    .btn { background:#334155; color:#e6eef8; }
+    .btn-primary { background:#2563eb; color:white; }
+    .btn-danger { background:#ef4444; color:white; }
+    table{width:100%; border-collapse:collapse; font-size:14px}
+    th,td{padding:8px; border-bottom:1px solid #1f2a44}
+    .mono{font-family: ui-monospace, Menlo, Consolas, monospace}
+    .tag{padding:2px 6px; border-radius:6px; background:#1f2a44}
+    tr.danger { background: #3b0f0f; color:#fff; }
+    tr.warn   { background: #3b2f0f; color:#fff; }
+  </style>
+</head>
+<body>
+  <h2>Mallware Cop — Control Panel</h2>
+
+  <div class="card">
+    <strong>Process Monitor</strong><br/><br/>
+    <button id="startSimple" class="btn">▶️ Start Simple (no VT)</button>
+    <button id="startVT" class="btn">🧪 Start With VT</button>
+    <button id="stopMon" class="btn-danger">⏹ Stop</button>
+    <button id="snapshot" class="btn">📸 Snapshot</button>
+    <button id="exportSnap" class="btn">💾 Export CSV</button>
+    <span id="statusText" style="margin-left:12px"></span>
+  </div>
+
+  <div class="card">
+    <strong>Suspicious files by name</strong><br/><br/>
+    <button id="dryScan" class="btn">🔍 Search (dry-run)</button>
+    <button id="hardScan" class="btn-primary">🧹 Search+Quarantine</button>
+    <button id="refreshQ" class="btn">🗂 Refresh Quarantine</button>
+    <ul id="qList"></ul>
+  </div>
+
+  <div class="card">
+    <strong>Current Processes</strong>
+    <button id="refreshProc" class="btn" style="margin-left:8px">Refresh</button>
+    <table>
+      <thead>
+        <tr><th>!</th><th>NAME</th><th class="mono">PID</th><th>CPU%</th><th>RSS</th><th>VT</th><th class="mono">EXE</th></tr>
+      </thead>
+      <tbody id="procBody"></tbody>
+    </table>
+  </div>
+
+<script src="/ui/script.js"></script>
+</body>
+</html>
