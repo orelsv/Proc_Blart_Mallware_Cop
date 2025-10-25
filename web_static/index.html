@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Mallware Cop — Control</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { font-family: Inter, system-ui, Arial; background: #0f172a; color:#e6eef8; padding:20px; }
+    .card { background:#0b1220; border-radius:12px; padding:16px; margin-bottom:12px; box-shadow:0 6px 18px rgba(2,6,23,0.6); }
+    button { padding:10px 14px; border-radius:8px; border:none; cursor:pointer; margin-right:8px; }
+    .btn-primary { background:#2563eb; color:white; }
+    .btn-danger { background:#ef4444; color:white; }
+    pre { background:#071026; padding:12px; border-radius:8px; overflow:auto; max-height:360px; }
+  </style>
+</head>
+<body>
+  <h2>Mallware Cop — Control Panel (VM)</h2>
+
+  <div class="card">
+    <strong>Monitor control</strong><br/><br/>
+    <button id="startBtn" class="btn-primary">Start Monitor</button>
+    <button id="stopBtn" class="btn-danger">Stop Monitor</button>
+    <button id="scanBtn">Scan Once</button>
+    <span id="statusText" style="margin-left:12px"></span>
+  </div>
+
+  <div class="card">
+    <strong>Quarantine</strong> — files moved by policy<br/><br/>
+    <button id="refreshQ">Refresh</button>
+    <ul id="qList"></ul>
+  </div>
+
+  <div class="card">
+    <strong>Scan single file (VT → quarantine if malicious)</strong><br/><br/>
+    <input id="scanPath" placeholder="C:\Users\Public\Downloads\eicar_test\eicar.com" style="width:60%">
+    <button id="scanPathBtn" class="btn-primary">Scan Path</button>
+    <pre id="scanPathOut">Enter a path and click Scan.</pre>
+  </div>
+
+
+  <div class="card">
+    <strong>Recent actions log</strong><br/><br/>
+    <button id="refreshLog">Refresh Log</button>
+    <pre id="logPre">No log yet.</pre>
+  </div>
+
+<script src="/ui/script.js"></script>
+</body>
+</html>

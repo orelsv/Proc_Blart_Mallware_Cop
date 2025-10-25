@@ -1,0 +1,50 @@
+# ===========================================
+#  policy.yaml — editable response policy
+#  Used by monitor_with_policy.py
+# ===========================================
+
+# ---- System resource thresholds ----
+# Якщо процес споживає більше ніж 500 МБ → запис у лог
+memory_warning_mb: 500
+
+# ---- Paths ----
+# Куди зберігати дампи пам’яті
+procdump_dir: "C:\\Tools\\dumps"
+
+# Куди переміщати підозрілі файли
+quarantine_dir: "C:\\Quarantine"
+
+# Повний шлях до procdump (ARM64 версія Sysinternals)
+procdump_path: "C:\\Tools\\SysinternalsSuite-ARM64\\procdump64a.exe"
+
+# ---- VirusTotal thresholds ----
+# Якщо (malicious + suspicious) > 3 → реакція
+vt_detect_threshold: 3
+
+# ---- Name-based blocking ----
+# Точні назви процесів, які треба одразу завершити й ізолювати
+kill_names:
+  - virus.exe
+
+# ---- Actions mapping ----
+# Вказує, що робити в кожному типі ситуації
+actions:
+  # Якщо збіг за назвою процесу
+  on_name_match:
+    - terminate
+    - quarantine
+
+  # Якщо VirusTotal показав понад threshold детекцій
+  on_vt_detected:
+    - suspend
+    - dump
+    - quarantine
+
+  # Якщо споживання пам’яті перевищує поріг
+  on_high_memory:
+    - log_warning
+
+# ---- Optional settings ----
+# Можеш додати власні шляхи або нові правила нижче
+# Наприклад, щоб автоматично видаляти карантиновані файли старше 30 днів
+# retention_days: 30
