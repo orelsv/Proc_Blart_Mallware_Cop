@@ -50,7 +50,7 @@ except Exception:
 
 # ------------------ Configuration ------------------
 # WARNING: Embedded key for training only. Prefer environment variable VT_API_KEY in real usage.
-VT_API_KEY_EMBEDDED = "4c41cd2a58c758b5090f330c23556fe006ded4c054d39899a7ebe87d85465ae0"
+VT_API_KEY_EMBEDDED = "Your API"
 VT_API_KEY = os.environ.get("VT_API_KEY", VT_API_KEY_EMBEDDED)
 
 POLL_INTERVAL = 5.0  # seconds for background monitor
